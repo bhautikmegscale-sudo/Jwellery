@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #C5A059;
+  --primary-foreground: #ffffff;
+  --muted: #f5f5f4;
+  /* stone-100 */
+  --muted-foreground: #78716c;
+  /* stone-500 */
+  --accent: #f5f5f4;
+  --accent-foreground: #171717;
+  --border: #e7e5e4;
+  /* stone-200 */
+  --input: #e7e5e4;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0c0a09;
+    /* stone-950 */
+    --foreground: #fafaf9;
+    /* stone-50 */
+    --card: #1c1917;
+    /* stone-900 */
+    --card-foreground: #fafaf9;
+    --popover: #1c1917;
+    --popover-foreground: #fafaf9;
+    --muted: #292524;
+    /* stone-800 */
+    --muted-foreground: #a8a29e;
+    /* stone-400 */
+    --accent: #292524;
+    --accent-foreground: #fafaf9;
+    --border: #292524;
+    --input: #292524;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.shopify-content {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--muted-foreground);
+  line-height: 1.85;
+}
+
+/* Headings */
+.shopify-content h1,
+.shopify-content h2,
+.shopify-content h3,
+.shopify-content h4 {
+  font-family: serif;
+  font-style: italic;
+  color: var(--foreground);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Paragraphs */
+.shopify-content p {
+  margin-bottom: 1.5rem;
+  font-size: 18px;
+}
+
+/* Bold */
+.shopify-content b,
+.shopify-content strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Italics */
+.shopify-content i {
+  color: var(--muted-foreground);
+}
+
+/* Blockquote */
+.shopify-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 2rem;
+  margin: 3rem 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+/* Links */
+.shopify-content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Spacing for line breaks */
+.shopify-content br {
+  display: block;
+  margin: 1rem 0;
+}
