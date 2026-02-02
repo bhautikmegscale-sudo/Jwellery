@@ -49,8 +49,8 @@ const saveCart = (cart) => {
 };
 
 const addToCartClient = async ({ variantId, quantity, product }) => {
-    // Simulate delay
-    await new Promise(resolve => setTimeout(resolve, 500));
+    // Simulate delay (reduced for better UX)
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     const currentCart = getCart();
     const existingItemIndex = currentCart.findIndex(item => item.variantId === variantId);
@@ -60,21 +60,40 @@ const addToCartClient = async ({ variantId, quantity, product }) => {
         currentCart[existingItemIndex].quantity += quantity;
     } else {
         // Add new item
-        // Find key details
-        // Find variant title
-        const variant = product.variants?.find(v => v.id.includes(variantId)) || product.variants?.[0];
+
+        // Normalize variants to array, handling both direct array and GraphQL edges
+        let variants = [];
+        if (Array.isArray(product.variants)) {
+            variants = product.variants;
+        } else if (product.variants?.edges) {
+            variants = product.variants.edges.map(e => e.node);
+        }
+
+        // Find the specific variant or fallback to the first one at all costs
+        let variant = variants.find(v => v.id.includes(variantId) || v.id === variantId);
+
+        if (!variant && variants.length > 0) {
+            variant = variants[0];
+            // If we fell back, update the variantId to match what we actually found
+            // This prevents "ghost" items with IDs that don't match data
+            variantId = variant.id;
+        }
 
         // Ensure we have a valid image (Variant Image > Product Display Image > Placeholder)
-        const image = variant?.image?.url || product.images?.[0]?.url || product.featuredImage?.url || "https://placehold.co/100";
+        const image = variant?.image?.url ||
+            product.images?.[0]?.url ||
+            product.featuredImage?.url ||
+            "https://placehold.co/100";
 
         const price = variant?.price?.amount || variant?.price || 0;
         const title = product.title;
+
         const variantTitle = variant?.selectedOptions
             ? variant.selectedOptions.map(opt => `${opt.name}: ${opt.value}`).join(' / ')
             : variant?.title || "Default Variant";
 
         currentCart.push({
-            variantId,
+            variantId, // Use the potentially corrected ID
             productId: product.id,
             title,
             variantTitle,
@@ -136,6 +155,13 @@ export const mergeCart = (serverCart) => {
     // Convert map back to array
     const merged = Array.from(cartMap.values());
     saveCart(merged);
+};
+
+
+
+export const setCart = (cart) => {
+    if (!Array.isArray(cart)) return;
+    saveCart(cart);
 };
 
 export default addToCartClient;

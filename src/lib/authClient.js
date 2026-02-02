@@ -86,8 +86,8 @@ export const authClient = {
                 const cartData = await cartRes.json();
                 if (cartData.cart && Array.isArray(cartData.cart)) {
                     try {
-                        const { mergeCart } = await import('./cartClient');
-                        mergeCart(cartData.cart);
+                        const { setCart } = await import('./cartClient');
+                        setCart(cartData.cart);
                     } catch (err) {
                         console.error("Auto-sync cart failed", err);
                     }

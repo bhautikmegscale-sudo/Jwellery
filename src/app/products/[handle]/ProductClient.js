@@ -709,7 +709,7 @@ export default function ProductPage({ product }) {
                                 <button
                                     key={val}
                                     onClick={() => handleSiblingClick(val, currentOp2)}
-                                    className={`px-5 py-2 text-[10px] uppercase tracking-widest rounded-full transition-all
+                                    className={`px-5 py-2 text-[10px] uppercase tracking-widest  transition-all
                     ${val === currentOp1 ? 'bg-[#C5A059] text-white shadow-md cursor-default' : 'border border-stone-200 hover:border-[#C5A059] text-stone-600 hover:text-[#C5A059]'}`}
                                 >
                                     {val}
@@ -737,7 +737,7 @@ export default function ProductPage({ product }) {
                                         key={val}
                                         onClick={() => handleSiblingClick(currentOp1, val)}
                                         disabled={!exists}
-                                        className={`px-5 py-2 text-[10px] uppercase tracking-widest rounded-full transition-all flex items-center gap-2
+                                        className={`px-5 py-2 text-[10px] uppercase tracking-widest transition-all flex items-center gap-2
                       ${val === currentOp2 ? 'bg-[#C5A059] text-white shadow-md cursor-default' : exists ? 'border border-stone-200 hover:border-[#C5A059] text-stone-600 hover:text-[#C5A059]' : 'border border-stone-100 text-stone-300 cursor-not-allowed'}`}
                                     >
                                         {val} {exists ? "" : "✕"}
@@ -884,7 +884,7 @@ export default function ProductPage({ product }) {
                                                         <button
                                                             key={val}
                                                             onClick={() => handleSelection(option.name, val)}
-                                                            className={`px-5 py-2 text-[10px] uppercase tracking-widest rounded-full transition-all
+                                                            className={`px-5 py-2 text-[10px] uppercase tracking-widest transition-all
                               ${selections[option.name] === val ? 'bg-[#C5A059] text-white shadow-md' : 'border border-stone-200 hover:border-[#C5A059]'}`}
                                                         >
                                                             {val}
@@ -901,7 +901,7 @@ export default function ProductPage({ product }) {
                                 <div className="space-y-4 pt-4">
                                     <div className="flex items-center gap-4">
                                         {/* Quantity Selector */}
-                                        <div className="flex items-center border border-stone-200 rounded-full px-1 py-1">
+                                        <div className="flex items-center border border-stone-200 px-1 py-1">
                                             <button
                                                 onClick={() => setQuantity(q => Math.max(1, q - 1))}
                                                 disabled={quantity <= 1}
@@ -930,14 +930,6 @@ export default function ProductPage({ product }) {
                                             {activeVariant?.availableForSale
                                                 ? (loading ? "Adding..." : "Add to Cart")
                                                 : "Out of Stock"}
-                                        </button>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <button className="flex-1 border border-stone-200 py-3 text-[9px] uppercase tracking-widest font-bold flex items-center justify-center gap-2 hover:bg-stone-50 transition-colors">
-                                            <Heart size={14} strokeWidth={1.5} /> Wishlist
-                                        </button>
-                                        <button className="flex-1 border border-stone-200 py-3 text-[9px] uppercase tracking-widest font-bold flex items-center justify-center gap-2 hover:bg-stone-50 transition-colors">
-                                            <Share2 size={14} strokeWidth={1.5} /> Share
                                         </button>
                                     </div>
                                 </div>

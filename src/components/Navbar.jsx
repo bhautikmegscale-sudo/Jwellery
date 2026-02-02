@@ -35,8 +35,12 @@ export default function Navbar() {
   useEffect(() => {
     updateCount();
     checkAuth();
-    const openCart = () => setIsCartOpen(true);
 
+    if (authClient.getToken()) {
+      authClient.getCustomer();
+    }
+
+    const openCart = () => setIsCartOpen(true);
     window.addEventListener("cart-updated", updateCount);
     window.addEventListener("auth-updated", checkAuth);
     window.addEventListener("open-cart-drawer", openCart);

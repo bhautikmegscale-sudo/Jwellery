@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-
+import { useRouter, useSearchParams } from 'next/navigation';
 import { CheckCircle, Truck, ArrowRight, Plus, Minus, Loader2 } from 'lucide-react';
 import Navbar2 from '@/components/Navbar2';
 import Footer from '@/components/Footer';
 
 export default function OrderConfirmationPage() {
     const router = useRouter();
-
+    const searchParams = useSearchParams();
     const [orderData, setOrderData] = useState(null);
     const [loading, setLoading] = useState(true);
 
