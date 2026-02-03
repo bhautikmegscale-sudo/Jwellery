@@ -8,7 +8,7 @@ const collections = [
     id: 1,
     name: "Ethereal Gold",
     itemCount: "12 Pieces",
-    image: "https://cdn.shopify.com/s/files/1/0947/2563/6380/files/31549d410b26155fe6d2fdc4b608573a.jpg?v=1769054701",
+    image: "https://cdn.shopify.com/s/files/1/0947/2563/6380/collections/Gemini_Generated_Image_uruqthuruqthuruq.png?v=1770107031",
     description: "Hand-crafted 18k gold pieces inspired by celestial movements.",
     color: "#E5E1DA",
     handle: "neclace"
@@ -17,7 +17,7 @@ const collections = [
     id: 2,
     name: "Oceanic Pearl",
     itemCount: "8 Pieces",
-    image: "https://cdn.shopify.com/s/files/1/0947/2563/6380/files/9f13f71c71ed2741c6327bd4995d69ac.jpg?v=1769054700",
+    image: "https://cdn.shopify.com/s/files/1/0947/2563/6380/collections/Gemini_Generated_Image_pnnptxpnnptxpnnp.png?v=1770107045",
     description: "Ethically sourced freshwater pearls set in minimalist silver.",
     color: "#D4E2D4",
     handle: "earings"
