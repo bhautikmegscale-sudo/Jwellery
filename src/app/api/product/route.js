@@ -33,74 +33,79 @@ async function request(query, variables = {}) {
   return json.data;
 }
 
-/**
- * ✅ Get all products (max 250 per request)
- */
-/**
- * ✅ Get all products (max 250 per request)
- * Deduplicates products sharing the same 'common_id' metafield.
- */
-export async function getAllProducts(first = 250) {
-  const query = `
-    query getProducts($first: Int!) {
-      products(first: $first) {
-        edges {
-          node {
-            id
-            title
-            handle
-            vendor
-            productType
-            tags
-            description
 
-            featuredImage {
-              url
-              altText
-            }
+// Update signature to accept deduplicate option
+export async function getAllProducts(first = 250, deduplicate = true) {
+  let allEdges = [];
+  let hasNextPage = true;
+  let cursor = null;
 
-            collections(first: 10) {
-              edges {
-                node {
-                  id
-                  title
-                  handle
+  while (hasNextPage) {
+    const query = `
+      query getProducts($first: Int!, $after: String) {
+        products(first: $first, after: $after) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          edges {
+            node {
+              id
+              title
+              handle
+              vendor
+              productType
+              tags
+              description
+
+              featuredImage {
+                url
+                altText
+              }
+
+              collections(first: 10) {
+                edges {
+                  node {
+                    id
+                    title
+                    handle
+                  }
                 }
               }
-            }
 
-            metafields(first: 20) {
-              edges {
-                node {
-                  namespace
-                  key
-                  value
-                }
-              }
-            }
-
-            priceRange {
-              minVariantPrice {
-                amount
-                currencyCode
-              }
-              maxVariantPrice {
-                amount
-                currencyCode
-              }
-            }
-
-            variants(first: 150) {
-              edges {
-                node {
-                  id
-                  title
-                  availableForSale
-                  price
-                  compareAtPrice
-                  selectedOptions {
-                    name
+              metafields(first: 20) {
+                edges {
+                  node {
+                    namespace
+                    key
                     value
+                  }
+                }
+              }
+
+              priceRange {
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+                maxVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+
+              variants(first: 150) {
+                edges {
+                  node {
+                    id
+                    title
+                    availableForSale
+                    price
+                    compareAtPrice
+                    selectedOptions {
+                      name
+                      value
+                    }
                   }
                 }
               }
@@ -108,12 +113,22 @@ export async function getAllProducts(first = 250) {
           }
         }
       }
-    }
-  `;
+    `;
 
-  const data = await request(query, { first });
+    const data = await request(query, { first: 250, after: cursor }); // Always fetch max 250 per batch for efficiency
 
-  const products = data.products.edges.map(({ node }) => {
+    if (!data?.products) break;
+
+    const { edges, pageInfo } = data.products;
+    allEdges = [...allEdges, ...edges];
+    hasNextPage = pageInfo.hasNextPage;
+    cursor = pageInfo.endCursor;
+
+    // Safety break if needed, though for "many" (e.g. thousands) this is fine.
+    // If the user truly has tens of thousands, we might need a different strategy, but for "many" usually implies hundreds or low thousands.
+  }
+
+  const products = allEdges.map(({ node }) => {
     const variants = node.variants.edges.map(e => e.node);
     const defaultVariant = variants[0] || null;
 
@@ -152,6 +167,11 @@ export async function getAllProducts(first = 250) {
       availableForSale: defaultVariant?.availableForSale ?? false,
     };
   });
+
+  // If deduplication is disabled, return all products immediately
+  if (!deduplicate) {
+    return products.map(product => ({ ...product, siblings: [] }));
+  }
 
   // Group products by common_id for siblings
   const productsByCommonId = new Map();
@@ -378,8 +398,9 @@ export async function GET(request) {
     const { searchParams } = new URL(request.url);
     const handle = searchParams.get("handle");
     const first = parseInt(searchParams.get("first") || "250");
+    const dedup = searchParams.get("dedup") !== "false";
 
-    // If handle is provided, fetch single product
+    // If handle is provided,fetch single product
     if (handle) {
       const product = await getProductByHandle(handle);
 
@@ -394,7 +415,7 @@ export async function GET(request) {
     }
 
     // Otherwise, fetch all products
-    const products = await getAllProducts(first);
+    const products = await getAllProducts(first, dedup);
 
     return NextResponse.json(
       {

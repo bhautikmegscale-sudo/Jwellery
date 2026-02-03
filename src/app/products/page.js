@@ -22,13 +22,13 @@ export default function CategoryPage() {
   const [sortBy, setSortBy] = useState("Featured");
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedMetals, setSelectedMetals] = useState([]);
-  const [maxPrice, setMaxPrice] = useState(100000);
+  const [maxPrice, setMaxPrice] = useState(100000000);
 
   // --- Fetch Data ---
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch("/api/product?first=250");
+        const res = await fetch("/api/product");
         const data = await res.json();
         if (data.products) {
           setProducts(data.products);
@@ -58,10 +58,16 @@ export default function CategoryPage() {
       if (p.priceRange?.minVariantPrice?.amount) {
         pPrice = parseFloat(p.priceRange.minVariantPrice.amount);
       } else if (typeof p.price === "string") {
-        pPrice = parseFloat(p.price);
+        pPrice = parseFloat(p.price.replace(/,/g, ''));
       } else if (p.price?.amount) {
         pPrice = parseFloat(p.price.amount);
+      } else if (typeof p.price === "number") {
+        pPrice = p.price;
       }
+
+      // Treat invalid prices as 0 to ensure they are shown (unless user sets maxPrice < 0)
+      if (isNaN(pPrice)) pPrice = 0;
+
       return pPrice <= maxPrice;
     });
 
