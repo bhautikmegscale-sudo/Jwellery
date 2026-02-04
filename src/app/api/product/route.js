@@ -375,24 +375,16 @@ export async function getProductByHandle(handle) {
 
   return {
     ...product,
-    media, // New media field
-    // images: product.media.edges.filter(e => e.node.mediaContentType === 'IMAGE').map(e => e.node.image), // Backward compatibility if needed, but we should use media
-    images: media.filter(m => m.type === 'image').map(m => ({ url: m.url, altText: m.altText })), // Keep 'images' as array of objects for simple compatibility
+    media,
+    images: media.filter(m => m.type === 'image').map(m => ({ url: m.url, altText: m.altText })),
     variants,
     defaultVariant,
     metafields,
-    siblings // Return the found siblings
+    siblings
   };
 }
 
-/**
- * Next.js App Router GET handler
- * 
- * Usage:
- * - GET /api/products - Get all products
- * - GET /api/products?handle=product-handle - Get specific product by handle
- * - GET /api/products?first=100 - Get first 100 products
- */
+
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);

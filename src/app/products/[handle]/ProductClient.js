@@ -942,27 +942,22 @@ export default function ProductPage({ product }) {
                                         <ul className="space-y-3">
                                             <li className="flex justify-between items-center text-[10px] uppercase tracking-widest">
                                                 <span className="text-stone-400">Material</span>
-                                                <span className="text-stone-900 font-medium">18K Gold</span>
+                                                <span className="text-stone-900 font-medium">{product?.metafields?.find(m => m.namespace === "custom" && m.key === "material")?.value || "18K Gold"}</span>
                                             </li>
 
                                             <li className="flex justify-between items-center text-[10px] uppercase tracking-widest">
                                                 <span className="text-stone-400">Finish</span>
-                                                <span className="text-stone-900 font-medium">High Polish</span>
-                                            </li>
-
-                                            <li className="flex justify-between items-center text-[10px] uppercase tracking-widest">
-                                                <span className="text-stone-400">Color</span>
-                                                <span className="text-stone-900 font-medium">Yellow Gold</span>
+                                                <span className="text-stone-900 font-medium">{product?.metafields?.find(m => m.namespace === "custom" && m.key === "finish")?.value || "High Polish"}</span>
                                             </li>
 
                                             <li className="flex justify-between items-center text-[10px] uppercase tracking-widest">
                                                 <span className="text-stone-400">Weight</span>
-                                                <span className="text-stone-900 font-medium">3.2 g</span>
+                                                <span className="text-stone-900 font-medium">{product?.metafields?.find(m => m.namespace === "custom" && m.key === "weight")?.value || "3.2 g"}</span>
                                             </li>
 
                                             <li className="flex justify-between items-center text-[10px] uppercase tracking-widest">
                                                 <span className="text-stone-400">Origin</span>
-                                                <span className="text-stone-900 font-medium">Handcrafted</span>
+                                                <span className="text-stone-900 font-medium">{product?.metafields?.find(m => m.namespace === "custom" && m.key === "origin")?.value || "Handcrafted"}</span>
                                             </li>
                                         </ul>
                                     </CollapsibleRow>
