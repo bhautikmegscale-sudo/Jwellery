@@ -18,7 +18,7 @@ export default function JewelryLanding() {
       <ScrollCollection />
       <RingSlider />
       <FeaturedProducts />
-      <SocialGallery/>
+      {/* <SocialGallery/> */}
       <Footer />
       <style jsx global>{`
         @keyframes slow-zoom { from { transform: scale(1.1); } to { transform: scale(1); } }
