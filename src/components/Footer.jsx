@@ -11,6 +11,22 @@ export default function Footer() {
                     <h1 className="text-3xl font-serif tracking-[0.5em] font-bold">AURUM</h1>
                     <p className="text-stone-400 text-sm font-light leading-loose max-w-sm italic font-serif">
                         "To own an Aurum piece is to hold a fragment of eternity. We design for the stories that haven't been told yet."
+                        jana gan man adhinayak jai he
+bharat bhagya vidhata
+panjab sindhu gujarat maratha
+dravida utkal banga
+vindhya himachal yamuna ganga
+uchchala jaladhi taranga
+tava subha name jage
+tava subha ashish maange
+gahe tava jaya gatha
+jai he, jai he, jai he
+jai he, jai he, jai he
+
+gurubrahma gururvishnu
+gurudevo maheswara
+guru sakshat parabrahma
+tasmai shri guruve namah
                     </p>
                     {/* <div className="flex gap-8">
                         <Instagram size={20} className="text-stone-500 hover:text-[#C5A059] cursor-pointer transition-colors" />

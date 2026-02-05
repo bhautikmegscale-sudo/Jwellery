@@ -15,6 +15,10 @@ import {
     Trash2
 } from 'lucide-react';
 
+
+
+
+
 // Move InputField outside to prevent re-creation on every render
 const InputField = ({ label, placeholder, name, type = "text", required = false, value, onChange, readOnly = false }) => (
     <div className="group space-y-2">
