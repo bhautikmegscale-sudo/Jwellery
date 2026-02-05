@@ -92,7 +92,7 @@ export async function POST(request) {
                 amountSet: {
                     shopMoney: {
                         amount: totalAmount,
-                        currencyCode: "INR" // Assuming INR based on frontend
+                        currencyCode: "USD" // Assuming USD based on frontend
                     }
                 }
             });
@@ -105,7 +105,7 @@ export async function POST(request) {
                 amountSet: {
                     shopMoney: {
                         amount: totalAmount,
-                        currencyCode: "INR"
+                        currencyCode: "USD"
                     }
                 }
             });
@@ -113,7 +113,7 @@ export async function POST(request) {
 
         const orderVariables = {
             order: {
-                currency: "INR",
+                currency: "USD",
                 email: customer.email,
                 phone: customer.phone,
                 shippingAddress: {
@@ -123,7 +123,7 @@ export async function POST(request) {
                     city: customer.city,
                     zip: customer.zip,
                     phone: customer.phone,
-                    countryCode: "IN" // Hardcoded for now or add to form
+                    countryCode: "US" // Hardcoded for now or add to form
                 },
                 lineItems: lineItems,
                 transactions: transactions

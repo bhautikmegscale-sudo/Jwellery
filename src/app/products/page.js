@@ -324,7 +324,7 @@ export default function CategoryPage() {
                   <SlidersHorizontal size={14} /> Investment
                 </h3>
                 <span className="text-xs font-mono text-[#C5A059]">
-                  Up to ₹{maxPrice.toLocaleString()}
+                  Up to ${maxPrice.toLocaleString()}
                 </span>
               </div>
               <input
@@ -337,8 +337,8 @@ export default function CategoryPage() {
                 className="w-full h-1 bg-stone-200 dark:bg-stone-800 rounded-lg appearance-none cursor-pointer accent-[#C5A059]"
               />
               <div className="flex justify-between mt-2 text-[10px] text-stone-400 font-mono">
-                <span>₹0</span>
-                <span>₹5,00,000+</span>
+                <span>$0</span>
+                <span>$5,00,000+</span>
               </div>
             </div>
           </div>

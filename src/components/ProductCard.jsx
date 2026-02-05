@@ -42,17 +42,17 @@ const ProductCard = ({ product, name, price, category, img, href }) => {
     };
 
     const formattedPrice = productPrice
-        ? new Intl.NumberFormat("en-IN", {
+        ? new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "INR",
+            currency: "USD",
         }).format(parseFloat(productPrice))
         : null;
 
     const compareAtPrice = product?.compareAtPrice || product?.compare_at_price;
     const formattedCompareAtPrice = compareAtPrice
-        ? new Intl.NumberFormat("en-IN", {
+        ? new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "INR",
+            currency: "USD",
         }).format(parseFloat(compareAtPrice))
         : null;
 

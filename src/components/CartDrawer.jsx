@@ -109,7 +109,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                                                     <p className="text-xs text-stone-500">{item.variantTitle}</p>
                                                 </div>
                                                 <div className="flex justify-between items-end">
-                                                    <p className="text-sm font-semibold text-[#8f4a12]">₹{Number(item.price).toFixed(2)}</p>
+                                                    <p className="text-sm font-semibold text-[#8f4a12]">${Number(item.price).toFixed(2)}</p>
                                                     <div className="flex items-center gap-3">
                                                         <div className="flex items-center border border-stone-200 rounded">
                                                             <button
@@ -145,7 +145,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                                 <div className="border-t pt-2 space-y-4 bg-white shrink-0">
                                     <div className="flex justify-between items-center text-lg font-medium">
                                         <span>Subtotal</span>
-                                        <span>₹{subtotal.toFixed(2)}</span>
+                                        <span>${subtotal.toFixed(2)}</span>
                                     </div>
                                     <p className="text-xs text-stone-400 text-center">Shipping and taxes calculated at checkout.</p>
                                     <Link href="/check-out">

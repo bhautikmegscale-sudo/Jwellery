@@ -116,9 +116,9 @@ export default function AboutUs() {
           <h2 className="text-4xl font-serif italic mb-20">The Faces Behind the Brilliance</h2>
           <div className="grid md:grid-cols-3 gap-12">
             {[
-              { name: "Ananya Iyer", role: "Creative Director", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" },
-              { name: "Rajesh Mehta", role: "Master Gemologist", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80" },
-              { name: "Sania Mirza", role: "Lead Designer", img: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80" }
+              { name: "Emily Johnson", role: "Creative Director", img: "/Emily Johnson.png" },
+              { name: "Michael Anderson", role: "Master Gemologist", img: "Michael Anderson.jpg" },
+              { name: "Jessica Miller", role: "Lead Designer", img: "Jessica Miller.jpg" }
             ].map((member, i) => (
               <div key={i} className="group">
                 <div className="aspect-[3/4] overflow-hidden mb-6 bg-stone-100">

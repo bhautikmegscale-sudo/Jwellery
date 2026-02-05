@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import Navbar2 from "../../components/Navbar";
 import Footer from "../../components/Footer";
-
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -123,11 +122,10 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-[11px] uppercase tracking-widest font-bold mb-1">
-                    Mumbai Flagship
+                    West Midlands Flagship
                   </h4>
                   <p className="text-stone-500 text-sm font-light">
-                    Ground Floor, Jio World Plaza, BKC, Mumbai, Maharashtra
-                    400051
+                    Coventry, West Midlands, England, CV1 2BP
                   </p>
                 </div>
               </div>
@@ -163,7 +161,7 @@ export default function ContactPage() {
                     Telephone
                   </h4>
                   <p className="text-stone-500 text-sm font-light">
-                    +91 22 6789 0000
+                    +44 7700 900789
                   </p>
                 </div>
               </div>
@@ -297,23 +295,35 @@ export default function ContactPage() {
 
       {/* 3. MAP SECTION (Mumbai Location) */}
       <section className="h-[500px] w-full bg-stone-200 relative grayscale hover:grayscale-0 transition-all duration-1000">
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="bg-white/95 backdrop-blur px-10 py-8 text-center shadow-2xl">
+        {/* Overlay content */}
+        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+          <div className="bg-white/95 backdrop-blur px-10 py-8 text-center shadow-2xl pointer-events-auto">
             <p className="text-[#C5A059] text-[10px] uppercase tracking-widest font-bold mb-2">
               Flagship Location
             </p>
-            <h3 className="font-serif italic text-2xl mb-4">BKC, Mumbai</h3>
-            <button className="text-[9px] uppercase tracking-[0.2em] border-b border-stone-900 pb-1">
+            <h3 className="font-serif italic text-2xl mb-4">Coventry, West Midlands,</h3>
+            <a
+              href="https://www.google.com/maps/place/Northfield+Rd,+Coventry+CV1+2BP,+UK/@52.4044896,-1.4950572,281m/data=!3m2!1e3!4b1!4m6!3m5!1s0x48774bc8b2be5e3f:0x8d6b6803226759a0!8m2!3d52.4044686!4d-1.493605!16s%2Fg%2F1tf47nmc?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[9px] uppercase tracking-[0.2em] border-b border-stone-900 pb-1"
+            >
               Get Directions
-            </button>
+            </a>
           </div>
         </div>
-        <img
-          src="https://images.unsplash.com/photo-1570160897040-30430ade2211?auto=format&fit=crop&q=80"
-          className="w-full h-full object-cover opacity-60"
-          alt="Mumbai BKC Map"
+
+        {/* Google Map */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.055927209493!2d-1.4950572!3d52.4044896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48774bc8b2be5e3f%3A0x8d6b6803226759a0!2sNorthfield%20Rd%2C%20Coventry%20CV1%202BP%2C%20UK!5e0!3m2!1sen!2sin!4v1707131111111"
+          className="w-full h-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
         />
+
       </section>
+
       <Footer />
     </div>
   );

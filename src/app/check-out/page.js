@@ -156,12 +156,12 @@ export default function CheckoutPage() {
                     })),
                     subtotal: subtotal,
                     totalQuantity: cartItems.reduce((sum, item) => sum + item.quantity, 0),
-                    currency: 'INR'
+                    currency: 'USD'
                 },
                 pricing: {
                     subtotal: subtotal,
                     total: subtotal,
-                    currency: 'INR'
+                    currency: 'USD'
                 }
             });
         }
@@ -496,7 +496,7 @@ export default function CheckoutPage() {
                                         disabled={isProcessing}
                                         className="flex-grow bg-stone-900 text-white py-6 text-[11px] uppercase tracking-[0.4em] font-bold hover:bg-[#C5A059] transition-all duration-500 shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        {isProcessing ? "Processing..." : `Complete Order — ₹ ${totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                                        {isProcessing ? "Processing..." : `Complete Order — $ ${totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
                                     </button>
                                 </div>
                             </section>
@@ -595,7 +595,7 @@ export default function CheckoutPage() {
                                                                 <Plus size={10} />
                                                             </button>
                                                         </div>
-                                                        <p className="text-[12px] font-medium">₹ {(Number(item.price) * item.quantity).toFixed(2)}</p>
+                                                        <p className="text-[12px] font-medium">$ {(Number(item.price) * item.quantity).toFixed(2)}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -605,7 +605,7 @@ export default function CheckoutPage() {
                                     <div className="space-y-4 pt-8 border-t border-stone-200 dark:border-stone-800">
                                         <div className="flex justify-between text-[11px] uppercase tracking-widest">
                                             <span className="text-stone-400 dark:text-stone-500">Subtotal</span>
-                                            <span className="text-stone-900 dark:text-stone-100 font-medium">₹ {subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                                            <span className="text-stone-900 dark:text-stone-100 font-medium">$ {subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                                         </div>
                                         <div className="flex justify-between text-[11px] uppercase tracking-widest">
                                             <span className="text-stone-400">Shipping</span>
@@ -613,12 +613,12 @@ export default function CheckoutPage() {
                                         </div>
                                         <div className="flex justify-between text-[11px] uppercase tracking-widest pb-6">
                                             <span className="text-stone-400 dark:text-stone-500">Estimated Tax</span>
-                                            <span className="text-stone-900 dark:text-stone-100 font-medium">₹ {tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                                            <span className="text-stone-900 dark:text-stone-100 font-medium">$ {tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                                         </div>
                                         <div className="flex justify-between items-baseline pt-6 border-t border-stone-900 dark:border-stone-100">
                                             <span className="text-xs uppercase tracking-[0.3em] font-bold">Total Amount</span>
                                             <div className="text-right">
-                                                <span className="text-2xl font-light tracking-tighter">₹ {totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                                                <span className="text-2xl font-light tracking-tighter">$ {totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                                             </div>
                                         </div>
                                     </div>

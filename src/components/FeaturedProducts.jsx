@@ -44,7 +44,7 @@ export default function FeaturedProducts() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
                     {products.map((product) => {
                         // Extract price correctly from the API response
-                        // Shopify stores prices as integers (e.g., 29999 = ₹299.99)
+                        // Shopify stores prices as integers (e.g., 29999 = $299.99)
                         let priceValue = 'N/A';
                         if (product.price && product.price.amount) {
                             priceValue = (parseFloat(product.price.amount) / 100).toFixed(2);

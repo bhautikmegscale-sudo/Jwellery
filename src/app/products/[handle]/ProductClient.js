@@ -1031,7 +1031,7 @@ export default function ProductPage({ product }) {
                                             {p.title}
                                         </h3>
                                         <p className="text-[11px] font-light text-stone-500">
-                                            ₹{p.price ? parseFloat(p.price.amount || p.price).toFixed(2) : parseFloat(p.priceRange?.minVariantPrice?.amount || 0).toFixed(2)}
+                                            ${p.price ? parseFloat(p.price.amount || p.price).toFixed(2) : parseFloat(p.priceRange?.minVariantPrice?.amount || 0).toFixed(2)}
                                         </p>
                                     </Link>
                                 ))}

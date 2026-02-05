@@ -56,7 +56,7 @@ function CompactProductCard({ product }) {
                 </div>
                 <div className="flex justify-between items-end">
                     <span className="text-xs font-semibold text-[#8f4a12]">
-                        ₹{parseFloat(price).toLocaleString('en-IN')}
+                        ${parseFloat(price).toLocaleString('en-IN')}
                     </span>
                     <button
                         onClick={handleAdd}
