@@ -34,7 +34,7 @@ export default function Footer() {
                 <div className="md:col-span-2 space-y-6">
                     <h5 className="text-[11px] uppercase tracking-[0.3em] font-bold text-[#C5A059]">Service</h5>
                     <ul className="space-y-4 text-stone-400 text-sm font-light">
-                        <li className="hover:text-white cursor-pointer transition-colors">Book a Virtual Appointment</li>
+                        <li className="hover:text-white cursor-pointer transition-colors"><Link href="/contact-us">Book a Virtual Appointment</Link></li>
                     </ul>
                 </div>
 
@@ -69,7 +69,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-[1500px] mx-auto pt-10 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center gap-6">
-                <p className="text-[10px] text-stone-600 uppercase tracking-widest font-bold">© 2026 Aurum High Jewelry • All Rights Reserved <a href='https://megascale.co.in' className='text-red-700'>@Megascale</a></p>
+                <p className="text-[10px] text-stone-600 uppercase tracking-widest font-bold">© 2026 Aurum High Jewelry  All Rights Reserved <span className='text-red-600'>Aurum</span> </p>
                 {/* <div className="flex gap-10 text-[9px] uppercase tracking-widest text-stone-500 font-bold">
                     <span className="cursor-pointer hover:text-white">Privacy</span>
                     <span className="cursor-pointer hover:text-white">Legal</span>
