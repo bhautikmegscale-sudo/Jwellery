@@ -7,23 +7,25 @@ const ADMIN_ACCESS_TOKEN = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || "shpat_1c82
 const API_VERSION = process.env.SHOPIFY_API_VERSION || "2025-01";
 
 // Simple in-memory OTP store (Use Redis/DB in production)
-const fs = require('fs');
-const OTP_FILE = 'otp_store.json';
+// In-memory OTP store (Global for dev environment persistence)
+// Note: In production serverless/edge environments, this memory is ephemeral.
+// For production scale, use Redis or a database.
+
+if (!globalThis.otpStore) {
+    globalThis.otpStore = {};
+}
 
 const getOtps = () => {
-    try {
-        if (fs.existsSync(OTP_FILE)) {
-            return JSON.parse(fs.readFileSync(OTP_FILE, 'utf8'));
-        }
-    } catch (e) { }
-    return {};
+    return globalThis.otpStore;
 };
 
 // Fixed: Accept customerId
 const saveOtp = (email, otp, customerId) => {
-    const otps = getOtps();
-    otps[email] = { code: otp, customerId, expires: Date.now() + 10 * 60 * 1000 }; // 10 mins
-    fs.writeFileSync(OTP_FILE, JSON.stringify(otps, null, 2));
+    globalThis.otpStore[email] = {
+        code: otp,
+        customerId,
+        expires: Date.now() + 10 * 60 * 1000 // 10 mins
+    };
 };
 
 // Fixed: Return data object instead of boolean
@@ -38,7 +40,6 @@ const verifyOtpStore = (email, code) => {
     if (otps[email] && otps[email].code === code && otps[email].expires > Date.now()) {
         const data = otps[email];
         delete otps[email]; // Consume OTP
-        fs.writeFileSync(OTP_FILE, JSON.stringify(otps, null, 2));
         return data;
     }
     return false;

@@ -163,10 +163,7 @@ export default function OrderConfirmationPage() {
                   <span className="text-gray-600">Subtotal</span>
                   <span>${orderData.subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Tax</span>
-                  <span>${orderData.tax.toFixed(2)}</span>
-                </div>
+
                 <div className="flex justify-between text-base font-medium pt-2 border-t border-gray-100">
                   <span>Total</span>
                   <span>${orderData.total.toFixed(2)}</span>

@@ -147,7 +147,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                                         <span>Subtotal</span>
                                         <span>${subtotal.toFixed(2)}</span>
                                     </div>
-                                    <p className="text-xs text-stone-400 text-center">Shipping and taxes calculated at checkout.</p>
+                                    <p className="text-xs text-stone-400 text-center">Shipping calculated at checkout.</p>
                                     <Link href="/check-out">
                                         <button className="w-full bg-stone-900 text-white py-4 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#8f4a12] transition-colors">
                                             Checkout

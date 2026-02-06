@@ -318,7 +318,7 @@ export default function ProfilePage() {
                                                         date: order.processedAt,
                                                         total: parseFloat(order.totalPrice.amount),
                                                         subtotal: parseFloat(order.subtotalPrice?.amount || order.totalPrice.amount),
-                                                        tax: parseFloat(order.totalTax?.amount || 0),
+                                                        tax: 0,
                                                         items: order.lineItems?.edges?.map(({ node: item }) => ({
                                                             title: item.title,
                                                             quantity: item.quantity,

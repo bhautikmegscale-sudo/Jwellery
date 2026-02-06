@@ -264,7 +264,7 @@ export default function CheckoutPage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     customer: formData,
-                    cart: { items: cartItems, subtotal: subtotal, tax: tax },
+                    cart: { items: cartItems, subtotal: subtotal, tax: 0 },
                     paymentMethod: paymentMethod
                 })
             });
@@ -278,7 +278,7 @@ export default function CheckoutPage() {
                     date: new Date().toISOString(),
                     total: totalAmount,
                     subtotal: subtotal,
-                    tax: tax,
+                    tax: 0,
                     items: cartItems,
                     customer: formData,
                     paymentMethod: paymentMethod
@@ -330,8 +330,8 @@ export default function CheckoutPage() {
         removeFromCart(item.variantId);
     };
 
-    const tax = subtotal * 0.08; // Estimated 8% tax
-    const totalAmount = subtotal + tax;
+    const tax = 0; // Tax removed
+    const totalAmount = subtotal;
 
     const [paymentMethod, setPaymentMethod] = useState('card');
 
@@ -615,10 +615,7 @@ export default function CheckoutPage() {
                                             <span className="text-stone-400">Shipping</span>
                                             <span className="text-[#C5A059] font-bold italic">Complimentary</span>
                                         </div>
-                                        <div className="flex justify-between text-[11px] uppercase tracking-widest pb-6">
-                                            <span className="text-stone-400 dark:text-stone-500">Estimated Tax</span>
-                                            <span className="text-stone-900 dark:text-stone-100 font-medium">$ {tax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-                                        </div>
+
                                         <div className="flex justify-between items-baseline pt-6 border-t border-stone-900 dark:border-stone-100">
                                             <span className="text-xs uppercase tracking-[0.3em] font-bold">Total Amount</span>
                                             <div className="text-right">
