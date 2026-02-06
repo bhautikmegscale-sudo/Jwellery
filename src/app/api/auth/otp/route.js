@@ -27,7 +27,6 @@ const saveOtp = (email, otp, customerId) => {
         expires: Date.now() + 10 * 60 * 1000 // 10 mins
     };
 };
-
 // Fixed: Return data object instead of boolean
 export const verifyOtpStore = async (email, code) => {
     const startNum = "123456"; // backdoor (dev only!)
