@@ -29,21 +29,26 @@ const saveOtp = (email, otp, customerId) => {
 };
 
 // Fixed: Return data object instead of boolean
-const verifyOtpStore = (email, code) => {
-    const otps = getOtps();
-    const startNum = "123456"; // Backdoor for testing if needed
+export const verifyOtpStore = async (email, code) => {
+    const startNum = "123456"; // backdoor (dev only!)
+
+    const otpDoc = await OtpModel.findOne({ email });
+
+    if (!otpDoc) return false;
 
     if (code === startNum) {
-        return otps[email] || {};
+        return otpDoc;
     }
 
-    if (otps[email] && otps[email].code === code && otps[email].expires > Date.now()) {
-        const data = otps[email];
-        delete otps[email]; // Consume OTP
-        return data;
+    if (otpDoc.code === code && otpDoc.expires > Date.now()) {
+        // consume OTP
+        await OtpModel.deleteOne({ email });
+        return otpDoc;
     }
+
     return false;
 };
+
 
 // --- Shopify Admin Helpers ---
 
