@@ -161,12 +161,12 @@ export default function OrderConfirmationPage() {
               <div className="mt-6 pt-6 border-t border-gray-100 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Subtotal</span>
-                  <span>${orderData.subtotal.toFixed(2)}</span>
+                  <span>£{orderData.subtotal.toFixed(2)}</span>
                 </div>
 
                 <div className="flex justify-between text-base font-medium pt-2 border-t border-gray-100">
                   <span>Total</span>
-                  <span>${orderData.total.toFixed(2)}</span>
+                  <span>£{orderData.total.toFixed(2)}</span>
                 </div>
               </div>
             </div>
