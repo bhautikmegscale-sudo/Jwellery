@@ -160,7 +160,7 @@ const ProductCard = ({ product, name, price, category, img, href }) => {
             {/* Content */}
             <div className="p-6">
                 <p className="text-xs uppercase tracking-widest text-slate-400 dark:text-muted-foreground mb-1">
-                    {productCategory}
+                    Aurum - Jewels
                 </p>
 
                 {/* Rating */}
