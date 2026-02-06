@@ -211,7 +211,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full border-b border-stone-200 py-3 focus:border-[#C5A059] outline-none transition-colors font-light text-sm"
-                    placeholder="Ananya"
+                    placeholder="Oliver"
                   />
                 </div>
                 <div className="space-y-2">
@@ -225,7 +225,7 @@ export default function ContactPage() {
                     onChange={handleInputChange}
                     required
                     className="w-full border-b border-stone-200 py-3 focus:border-[#C5A059] outline-none transition-colors font-light text-sm"
-                    placeholder="Iyer"
+                    placeholder="James"
                   />
                 </div>
               </div>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                   onChange={handleInputChange}
                   required
                   className="w-full border-b border-stone-200 py-3 focus:border-[#C5A059] outline-none transition-colors font-light text-sm"
-                  placeholder="ananya.iyer@example.com"
+                  placeholder="oliverjames@example.com"
                 />
               </div>
 
