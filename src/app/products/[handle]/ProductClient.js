@@ -14,6 +14,7 @@ import JewelryShowcase from '../../../components/Discover';
 import YouMayAlsoLike from '../../../components/YouMayAlsoLike';
 import TrustIcon from '../../../components/TrustIcon';
 import Link from 'next/link';
+import ProductViewer from '../../../components/ProductViewer';
 import addToCartClient from '@/lib/cartClient';
 import { authClient } from '@/lib/authClient';
 // Reusable Collapsible Component
@@ -808,28 +809,11 @@ export default function ProductPage({ product }) {
                         <div className="relative inline-block bg-[#F9F8F6] h-[50%] overflow-hidden group w-full">
                             {media[activeImg]?.type === 'model' ? (
                                 /* 3D Model Viewer */
-                                <model-viewer
-                                    src={media[activeImg].url}
-                                    poster={media[activeImg].previewUrl}
-                                    alt={media[activeImg].altText || "3D Model"}
-                                    camera-controls
-                                    touch-action="pan-y"
-
-                                    /* Lighting & Color Accuracy */
-                                    environment-image="legacy"
-                                    tone-mapping="none"
-                                    exposure="1"
-                                    shadow-intensity="0.3"
-
-                                    /* Optional */
-                                    auto-rotate
-                                    style={{
-                                        width: "100%",
-                                        height: "500px",
-                                        minHeight: "500px",
-                                        backgroundColor: "#ffffffff"
-                                    }}
-                                ></model-viewer>
+                                <div style={{ width: '100%', height: '500px', minHeight: '500px' }}>
+                                    <ProductViewer 
+                                        uploadedModel={{ url: media[activeImg].url }} 
+                                    />
+                                </div>
 
                             ) : (
                                 /* Standard Image */
